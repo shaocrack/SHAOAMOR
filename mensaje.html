@@ -1,0 +1,66 @@
+<!-- Agrega estas modificaciones a tu HTML -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHAO MENSAJE</title>
+  <link rel="stylesheet" media="all" href="style2.css" />
+</head>
+
+<body>
+  <div class="container">
+    <input type="text" id="nombreInput" placeholder="Ingresa tu nombre">
+    <button id="saludoButton" class="saludo">Enviar</button>
+  </div>
+  <div id="saludoText" class="saludo hidden"></div>
+
+  <script>
+    const nombreInput = document.getElementById("nombreInput");
+    const saludoButton = document.getElementById("saludoButton");
+    const saludoText = document.getElementById("saludoText");
+
+    saludoText.style.display = "none"; // Oculta el saludo inicialmente
+
+    // Agrega un evento para mostrar el saludo al hacer clic en el botón
+    saludoButton.addEventListener("click", () => {
+      const nombre = nombreInput.value;
+      const saludo =  `Hola hermosa ${nombre}, sabes una cosa.
+                      Eres mi variable más preciada, mi joya.
+
+Aquí estoy, compilando palabras en verso,
+Para decirte, hermosa, que eres mi universo.
+
+Y mientras el tiempo pase, mi amor por ti seguirá creciendo,
+Eres mi proyecto más importante, mi destino, mi todo.
+Entonces, con cada línea de código que escriba,
+Recuerda que en mi vida, tú eres la razón por la que siempre viva.`;
+
+      // Oculta el input y muestra el saludo con animación letra por letra
+      nombreInput.classList.add("hidden");
+      saludoButton.classList.add("hidden");
+      saludoText.style.display = "inline-block"; // Muestra el saludo
+      saludoText.classList.remove("hidden");
+      typeWriter(saludo, saludoText);
+    });
+
+    // Función para la animación de aparición letra por letra
+    function typeWriter(text, targetElement) {
+      let i = 0;
+      const speed = 50; // Velocidad de escritura (ms)
+
+      function type() {
+        if (i < text.length) {
+          targetElement.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+
+      type();
+    }
+  </script>
+</body>
+
+</html>
